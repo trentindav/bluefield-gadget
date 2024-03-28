@@ -1,0 +1,10 @@
+# ref: https://ubuntu.com/core/docs/modify-kernel-options for this conf format
+
+# so we can see the console output via rshim fs
+console=hvc0
+# so we can see the console output via obmc console
+# and show the UC configuration dialogue
+console=ttyAMA0
+# by default, let us enable earlycon messages for development and debugging
+earlycon=pl011,0x13010000 
+

@@ -1,4 +1,4 @@
-name: pc
+name: bluefield-gadget
 version: '22-0.4'
 type: gadget
 base: core22
@@ -8,6 +8,10 @@ description: |
 confinement: strict
 grade: stable
 icon: icon.png
+
+architectures:
+  - build-on: [amd64, arm64]
+    build-for: arm64
 
 package-repositories:
  - type: apt
@@ -82,7 +86,10 @@ parts:
   gadget:
     plugin: nil
     source: gadget
-    override-build:
+    override-build: |
       # We need to install directly in the project dir as snapcraft checks there
       # for gadget.yaml instead of looking first at the prime folder.
       install -m 644 gadget-"$CRAFT_TARGET_ARCH".yaml "$CRAFT_PROJECT_DIR"/gadget.yaml
+
+      # put cmdline.extra
+      install -m 644 cmdline.extra "$CRAFT_PART_INSTALL"/cmdline.extra
