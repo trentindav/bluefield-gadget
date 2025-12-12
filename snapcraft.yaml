@@ -1,18 +1,18 @@
-name: pc
+name: bluefield-gadget
 version: '24-0.2'
 type: gadget
 base: core24
-summary: PC gadget for generic devices
+summary: Gadget for Bluefield3 DPU
 description: |
-    This gadget enables generic pc devices to work with Ubuntu Core
+    This gadget enables BlueField3 DPU devices to work with Ubuntu Core
 confinement: strict
 grade: stable
 icon: icon.png
 
-#package-repositories:
-# - type: apt
-#   ppa: ucdev/uc-staging-ppa
-#   priority: always
+platforms:
+  bluefield3:
+    build-on: [amd64, arm64]
+    build-for: arm64
 
 hooks:
   prepare-device:
@@ -92,7 +92,6 @@ parts:
   gadget:
     plugin: nil
     source: gadget
-    override-build:
-      # We need to install directly in the project dir as snapcraft checks there
-      # for gadget.yaml instead of looking first at the prime folder.
+    override-build: |
       install -m 644 gadget-"${CRAFT_ARCH_BUILD_FOR}".yaml "${CRAFT_PROJECT_DIR}"/gadget.yaml
+      install -m 644 cmdline.extra "$CRAFT_PART_INSTALL"/cmdline.extra

@@ -1,0 +1,6 @@
+# Console output via rshim fs
+console=hvc0
+# Support console output via obmc, required to show the UC configuration dialogue
+console=ttyAMA0
+# earlycon messages are enabled for development and debugging
+earlycon=pl011,0x13010000
