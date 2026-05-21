@@ -6,3 +6,8 @@ console=hvc0
 console=ttyAMA0
 # earlycon messages are enabled for development and debugging
 earlycon=pl011,0x13010000
+# hugepages
+hugepagesz=512M
+hugepages=10
+hugepagesz=2M
+hugepages=4096
