@@ -5,7 +5,8 @@ console=hvc0
 # Support console output via obmc console, required to show the UC configuration dialogue
 console=ttyAMA0
 # earlycon messages are enabled for development and debugging
-earlycon=pl011,0x13010000
+#earlycon=pl011,0x13010000
+earlycon=pl011,0x09000000
 # hugepages
 hugepagesz=512M
 hugepages=10
